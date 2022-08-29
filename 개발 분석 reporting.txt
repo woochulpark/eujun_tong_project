@@ -1,0 +1,15 @@
+1. 기존 컨텐츠와 통합 시스템 컨텐츠 Matching
+2. Matching 된 기존 컨텐츠 쿼리 정리
+3. 개발 용 Data Base를 구축 
+4. 신규 컨텐츠 DataBase Table 구축
+5. Programing (php : CodeIgniter) - DataBase 연결 및 Program 연동 (CodeIgniter : Active Record) 테스트
+5. 로그인 (Member) 영역 및 레벨링 재구축 
+   └ 재고 와 장례 의전 및 상담 페이지에 대한 레벨링이 필요.
+6. 정리된 쿼리들을 통합 시스템 컨텐츠(PC)에 배치 
+7. Data 출력 및 기능 들 확인 (PC).
+   └ Reporting 출력 및 다운로드 확인 (출력물이 너무 많을 경우에는 다운로드로 교체)
+8. Tablet 페이지 구성 정리
+9. PC 재고와 Tablet 재고 관리 구성 및 Hybrid App 연동 테스팅.
+10. 장례 의전 및 정산 (Tablet) 구성 및 Hybrid App 연동 테스팅 .
+    └ Reporting 출력 및 다운로드 확인 (출력물이 너무 많을 경우에는 다운로드로 교체)
+    └ 결제 시스템 (인앱 결제에는 구글에서 제약이 발생 됨.) 
