@@ -1,0 +1,133 @@
+HTTP_EVENT_SEARCH.do => "id=%s&StartDay=%s&EndDay=%s&BONBU=%s&CENTER=%s&EUSERID=%s&EUSERNAME=%s&GNAME=%s&JNAME=%s&ESTATE=%s&GTYPE=%s&EVENTTYPE=%s"
+getCallback : "HTTP_EVENT_LIST.do"
+  └ "HTTP_BONBU.do" => "LOGC=%s"
+  └ "HTTP_CENTER.do" => "LOGC=%s&BONBU=%s"
+
+  HTTP_BONBU.do", "HTTP_CENTER.do", "HTTP_EVENT_SEARCH.do"
+
+getFileCallback :   
+
+"HTTP_EVENT_LIST.do" => "id=%s"
+
+"HTTP_MODEL_LIST.do" => "LOGC=%s&LCODE=%s&MCODE=%s&SCODE=%s&MNAME=%s"
+
+ModelDialog.class => getCallback
+"HTTP_LGROUP_LIST.do", "HTTP_MGROUP_LIST.do", "HTTP_SGROUP_LIST.do", "HTTP_MODEL_LIST.do"
+
+getFileCallback
+"HTTP_MGROUP_LIST.do" => "LOGC=%s&LCODE=%s"
+
+"HTTP_SGROUP_LIST.do" => "LOGC=%s&LCODE=%s&MCODE=%s"
+
+"HTTP_LGROUP_LIST.do"
+
+"HTTP_EVENT_MODEL.do" => "MCODE=%s&LOGC=%s&BONBU=%s&CENTER=%s"
+
+
+
+inkedHashMap.put("MODEL", str11);
+linkedHashMap.put("CENTER", str5);
+linkedHashMap.put("QTY", String.valueOf(bool));
+linkedHashMap.put("REDATE", str10);
+linkedHashMap.put("KINDS", str12);
+"HTTP_EVENT_SAVE.do" => "MDATA=%s&ID=%s"
+
+
+"HTTP_EVENT_MODEL.do" => "MCODE=%s&LOGC=%s&BONBU=%s&CENTER=%s"
+
+getCallback
+"HTTP_BONBU_LIST.do"
+
+"HTTP_BONBU.do" => "LOGC=%s&BONBUTYPE=0"
+"HTTP_CENTER.do" => "LOGC=%s&BONBU=%s&BONBUTYPE=0"
+"HTTP_BONBU.do" => "LOGC=%s&BONBUTYPE=1"
+"HTTP_CENTER.do" => "LOGC=%s&BONBU=%s&BONBUTYPE=1"
+
+"HTTP_BONBU.do", "HTTP_CENTER.do", "HTTP_EVENT_MODEL.do", "HTTP_EVENT_SAVE.do"
+
+
+"HTTP_BONBU_LIST.do" => "id=%s"
+
+"HTTP_EVENTMODEL_DELETE.do" => "DOCNO=%s&CENTER=%s&MODEL=%s&ID=%s"
+
+"HTTP_EVENT_MODEL.do" => "MCODE=%s&LOGC=%s&BONBU=%s&CENTER=%s"
+
+
+LinkedHashMap<Object, Object> linkedHashMap = new LinkedHashMap<>();
+linkedHashMap.put("MODEL", str5);
+linkedHashMap.put("CENTER", str4);
+linkedHashMap.put("QTY", String.valueOf(bool));
+linkedHashMap.put("REDATE", str3);
+linkedHashMap.put("KINDS", str6);
+"HTTP_EVENT_UPDATE.do" => "MDATA=%s&ID=%s"
+
+
+
+"HTTP_EVENT_MODEL.do" => "MCODE=%s&LOGC=%s&BONBU=%s&CENTER=%s"
+
+"HTTP_EVENT_DELETE.do" => "DOCNO=%s&ID=%s"
+
+"HTTP_EVENT_DETAIL.do" => "DOCNO=%s&id=%s"
+
+
+public final String HTTP_BONBU = "HTTP_BONBU.do";
+  
+  public final String HTTP_BONBU_LIST = "HTTP_BONBU_LIST.do";
+  
+  public final String HTTP_CENTER = "HTTP_CENTER.do";
+  
+  public final String HTTP_CFM = "HTTP_CFM.do";
+  
+  public final String HTTP_CFM_ADD = "HTTP_CFM_ADD.do";
+  
+  public final String HTTP_CFM_SEARCH = "HTTP_CFM_SEARCH.do";
+  
+  public final String HTTP_EVENTMODEL_DELETE = "HTTP_EVENTMODEL_DELETE.do";
+  
+  public final String HTTP_EVENTOUT_LIST = "HTTP_EVENTOUT_LIST.do";
+  
+  public final String HTTP_EVENTOUT_SEARCH = "HTTP_EVENTOUT_SEARCH.do";
+  
+  public final String HTTP_EVENT_DELETE = "HTTP_EVENT_DELETE.do";
+  
+  public final String HTTP_EVENT_DETAIL = "HTTP_EVENT_DETAIL.do";
+  
+  public final String HTTP_EVENT_LIST = "HTTP_EVENT_LIST.do";
+  
+  public final String HTTP_EVENT_MODEL = "HTTP_EVENT_MODEL.do";
+  
+  public final String HTTP_EVENT_SAVE = "HTTP_EVENT_SAVE.do";
+  
+  public final String HTTP_EVENT_SEARCH = "HTTP_EVENT_SEARCH.do";
+  
+  public final String HTTP_EVENT_UPDATE = "HTTP_EVENT_UPDATE.do";
+  
+  public final String HTTP_FILE_DEL = "HTTP_FILE_DEL.do";
+  
+  public final String HTTP_FILE_Rcv = "download.do";
+  
+  public final String HTTP_FILE_Snd = "HTTP_FILE_Snd.do";
+  
+  public final String HTTP_LGROUP_LIST = "HTTP_LGROUP_LIST.do";
+  
+  public final String HTTP_LOGIN = "HTTP_LOGIN.do";
+  
+  public final String HTTP_MAIN = "HTTP_MAIN.do";
+  
+  public final String HTTP_MAIN_DETAIL = "HTTP_MAIN_DETAIL.do";
+  
+  public final String HTTP_MGROUP_LIST = "HTTP_MGROUP_LIST.do";
+  
+  public final String HTTP_MODEL_LIST = "HTTP_MODEL_LIST.do";
+  
+  public final String HTTP_RETURN = "HTTP_RETURN.do";
+  
+  public final String HTTP_RETURN_SEARCH = "HTTP_RETURN_SEARCH.do";
+  
+  public final String HTTP_RETURN_UPDATE = "HTTP_RETURN_UPDATE.do";
+  
+  public final String HTTP_SGROUP_LIST = "HTTP_SGROUP_LIST.do";
+  
+  public final String HTTP_UPDATE = "HTTP_UPDATE.do";
+  
+  public final String HTTP_VERSION = "HTTP_VERSION.do";
