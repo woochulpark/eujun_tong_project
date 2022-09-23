@@ -1,0 +1,535 @@
+의전 재고 관리 APp 분석
+
+google
+android.material
+gson
+zxing
+
+hanmiit.app.AplusLife
+
+
+HTTP_EVENT_MODEL.do : MCODE=%s&LOGC=%s&BONBU=%s&CENTER=%s
+
+LinkedHashMap<Object, Object> linkedHashMap = new LinkedHashMap<>();
+linkedHashMap.put("MODEL", str12);
+linkedHashMap.put("CENTER", str6);
+linkedHashMap.put("QTY", String.valueOf(bool));
+linkedHashMap.put("REDATE", str11);
+linkedHashMap.put("KINDS", str7);
+
+HTTP_EVENT_SAVE.do : "MDATA=%s&ID=%s"
+
+
+"HTTP_EVENT_MODEL.do" : "MCODE=%s&LOGC=%s&BONBU=%s&CENTER=%s"
+
+
+public void getCallback(AndroidVo paramAndroidVo, String paramString1, String paramString2, String paramString3) {
+    this.common.System_PDLG_dismess();
+    try {
+      sb_bizListView_Adapter.ItemSet itemSet;
+      this.common.getClass();
+      if (paramString1.equals("0000")) {
+        Spinner spinner;
+        this.common.getClass();
+        if (paramString3.equals("HTTP_BONBU_LIST.do")) {
+          paramString1 = paramAndroidVo.returnCode;
+          this.common.getClass();
+          if (paramString1.equals("0000")) {
+            this.btn_EventNo.setVisibility(0);
+            paramString1 = paramAndroidVo.field1;
+            this.POSITION = paramString1;
+            boolean bool = paramString1.equals("004");
+            if (bool || this.POSITION.equals("005")) {
+              ArrayList<LinkedHashMap<Object, Object>> arrayList1 = new ArrayList();
+              this();
+              LinkedHashMap<Object, Object> linkedHashMap2 = new LinkedHashMap<>();
+              this();
+              linkedHashMap2.put("MCI_LOGC", paramAndroidVo.field2);
+              linkedHashMap2.put("MCI_LOGCNAME", paramAndroidVo.field5);
+              arrayList1.add(linkedHashMap2);
+              setLogc((List)arrayList1);
+              setELogc((List)arrayList1);
+              arrayList1 = new ArrayList<>();
+              this();
+              linkedHashMap2 = new LinkedHashMap<>();
+              this();
+              linkedHashMap2.put("MCI_Bonbu", paramAndroidVo.field3);
+              linkedHashMap2.put("MCI_BonbuNAME", paramAndroidVo.field6);
+              arrayList1.add(linkedHashMap2);
+              setBonbu((List)arrayList1);
+              setEBonbu((List)arrayList1);
+              ArrayList<LinkedHashMap<Object, Object>> arrayList2 = new ArrayList();
+              this();
+              LinkedHashMap<Object, Object> linkedHashMap1 = new LinkedHashMap<>();
+              this();
+              linkedHashMap1.put("MCI_Center", paramAndroidVo.field4);
+              linkedHashMap1.put("MCI_CenterName", paramAndroidVo.field7);
+              arrayList2.add(linkedHashMap1);
+              setCenter((List)arrayList2);
+              setECenter((List)arrayList2);
+              return;
+            } 
+            if (this.POSITION.equals("003")) {
+              ArrayList<LinkedHashMap<Object, Object>> arrayList2 = new ArrayList();
+              this();
+              LinkedHashMap<Object, Object> linkedHashMap1 = new LinkedHashMap<>();
+              this();
+              linkedHashMap1.put("MCI_LOGC", paramAndroidVo.field2);
+              linkedHashMap1.put("MCI_LOGCNAME", paramAndroidVo.field5);
+              arrayList2.add(linkedHashMap1);
+              setLogc((List)arrayList2);
+              setELogc((List)arrayList2);
+              ArrayList<LinkedHashMap<Object, Object>> arrayList1 = new ArrayList();
+              this();
+              LinkedHashMap<Object, Object> linkedHashMap2 = new LinkedHashMap<>();
+              this();
+              linkedHashMap2.put("MCI_Bonbu", paramAndroidVo.field3);
+              linkedHashMap2.put("MCI_BonbuNAME", paramAndroidVo.field6);
+              arrayList1.add(linkedHashMap2);
+              setBonbu((List)arrayList1);
+              setEBonbu((List)arrayList1);
+              setCenter(paramAndroidVo.IT_TAB1);
+              setECenter(paramAndroidVo.IT_TAB1);
+            } else {
+              if (this.POSITION.equals("001") || this.POSITION.equals("002")) {
+                setLogc(paramAndroidVo.IT_TAB1);
+                setELogc(paramAndroidVo.IT_TAB1);
+                Spinner spinner3 = this.spinner_logc;
+                AdapterView.OnItemSelectedListener onItemSelectedListener2 = new AdapterView.OnItemSelectedListener() {
+                    public void onItemSelected(AdapterView<?> param1AdapterView, View param1View, int param1Int, long param1Long) {
+                      String str1;
+                      if (EventAddFragment.this.adapter_bonbu != null) {
+                        EventAddFragment.this.adapter_bonbu.clear();
+                        EventAddFragment.this.bonbu_spinnerMap.clear();
+                      } 
+                      if (EventAddFragment.this.adapter_center != null) {
+                        EventAddFragment.this.adapter_center.clear();
+                        EventAddFragment.this.center_spinnerMap.clear();
+                      } 
+                      if (EventAddFragment.this.logc_spinnerMap.containsKey(Integer.valueOf(EventAddFragment.this.spinner_logc.getSelectedItemPosition()))) {
+                        str1 = EventAddFragment.this.logc_spinnerMap.get(Integer.valueOf(EventAddFragment.this.spinner_logc.getSelectedItemPosition()));
+                      } else {
+                        str1 = "";
+                      } 
+                      String str2 = String.format("LOGC=%s&BONBUTYPE=0", new Object[] { str1 });
+                      classCommon classCommon = EventAddFragment.this.common;
+                      FragmentActivity fragmentActivity = EventAddFragment.this.getActivity();
+                      EventAddFragment.this.common.getClass();
+                      classCommon.httpConnect((Context)fragmentActivity, str2, "HTTP_BONBU.do");
+                    }
+                    
+                    public void onNothingSelected(AdapterView<?> param1AdapterView) {}
+                  };
+                super(this);
+                spinner3.setOnItemSelectedListener(onItemSelectedListener2);
+                Spinner spinner1 = this.spinner_bonbu;
+                AdapterView.OnItemSelectedListener onItemSelectedListener4 = new AdapterView.OnItemSelectedListener() {
+                    public void onItemSelected(AdapterView<?> param1AdapterView, View param1View, int param1Int, long param1Long) {
+                      String str1;
+                      if (EventAddFragment.this.adapter_center != null) {
+                        EventAddFragment.this.adapter_center.clear();
+                        EventAddFragment.this.center_spinnerMap.clear();
+                      } 
+                      boolean bool = EventAddFragment.this.logc_spinnerMap.containsKey(Integer.valueOf(EventAddFragment.this.spinner_logc.getSelectedItemPosition()));
+                      String str2 = "";
+                      if (bool) {
+                        str1 = EventAddFragment.this.logc_spinnerMap.get(Integer.valueOf(EventAddFragment.this.spinner_logc.getSelectedItemPosition()));
+                      } else {
+                        str1 = "";
+                      } 
+                      if (EventAddFragment.this.bonbu_spinnerMap.containsKey(Integer.valueOf(EventAddFragment.this.spinner_bonbu.getSelectedItemPosition())))
+                        str2 = EventAddFragment.this.bonbu_spinnerMap.get(Integer.valueOf(EventAddFragment.this.spinner_bonbu.getSelectedItemPosition())); 
+                      String str3 = String.format("LOGC=%s&BONBU=%s&BONBUTYPE=0", new Object[] { str1, str2 });
+                      classCommon classCommon = EventAddFragment.this.common;
+                      FragmentActivity fragmentActivity = EventAddFragment.this.getActivity();
+                      EventAddFragment.this.common.getClass();
+                      classCommon.httpConnect((Context)fragmentActivity, str3, "HTTP_CENTER.do");
+                    }
+                    
+                    public void onNothingSelected(AdapterView<?> param1AdapterView) {}
+                  };
+                super(this);
+                spinner1.setOnItemSelectedListener(onItemSelectedListener4);
+                Spinner spinner2 = this.spinner_Elogc;
+                AdapterView.OnItemSelectedListener onItemSelectedListener1 = new AdapterView.OnItemSelectedListener() {
+                    public void onItemSelected(AdapterView<?> param1AdapterView, View param1View, int param1Int, long param1Long) {
+                      String str1;
+                      if (EventAddFragment.this.adapter_Ebonbu != null) {
+                        EventAddFragment.this.adapter_Ebonbu.clear();
+                        EventAddFragment.this.Ebonbu_spinnerMap.clear();
+                      } 
+                      if (EventAddFragment.this.adapter_Ecenter != null) {
+                        EventAddFragment.this.adapter_Ecenter.clear();
+                        EventAddFragment.this.Ecenter_spinnerMap.clear();
+                      } 
+                      if (EventAddFragment.this.Elogc_spinnerMap.containsKey(Integer.valueOf(EventAddFragment.this.spinner_Elogc.getSelectedItemPosition()))) {
+                        str1 = EventAddFragment.this.Elogc_spinnerMap.get(Integer.valueOf(EventAddFragment.this.spinner_Elogc.getSelectedItemPosition()));
+                      } else {
+                        str1 = "";
+                      } 
+                      String str2 = String.format("LOGC=%s&BONBUTYPE=1", new Object[] { str1 });
+                      classCommon classCommon = EventAddFragment.this.common;
+                      FragmentActivity fragmentActivity = EventAddFragment.this.getActivity();
+                      EventAddFragment.this.common.getClass();
+                      classCommon.httpConnect((Context)fragmentActivity, str2, "HTTP_BONBU.do");
+                    }
+                    
+                    public void onNothingSelected(AdapterView<?> param1AdapterView) {}
+                  };
+                super(this);
+                spinner2.setOnItemSelectedListener(onItemSelectedListener1);
+                spinner = this.spinner_Ebonbu;
+                AdapterView.OnItemSelectedListener onItemSelectedListener3 = new AdapterView.OnItemSelectedListener() {
+                    public void onItemSelected(AdapterView<?> param1AdapterView, View param1View, int param1Int, long param1Long) {
+                      String str1;
+                      if (EventAddFragment.this.adapter_Ecenter != null) {
+                        EventAddFragment.this.adapter_Ecenter.clear();
+                        EventAddFragment.this.Ecenter_spinnerMap.clear();
+                      } 
+                      boolean bool = EventAddFragment.this.Elogc_spinnerMap.containsKey(Integer.valueOf(EventAddFragment.this.spinner_Elogc.getSelectedItemPosition()));
+                      String str2 = "";
+                      if (bool) {
+                        str1 = EventAddFragment.this.Elogc_spinnerMap.get(Integer.valueOf(EventAddFragment.this.spinner_Elogc.getSelectedItemPosition()));
+                      } else {
+                        str1 = "";
+                      } 
+                      if (EventAddFragment.this.Ebonbu_spinnerMap.containsKey(Integer.valueOf(EventAddFragment.this.spinner_Ebonbu.getSelectedItemPosition())))
+                        str2 = EventAddFragment.this.Ebonbu_spinnerMap.get(Integer.valueOf(EventAddFragment.this.spinner_Ebonbu.getSelectedItemPosition())); 
+                      str2 = String.format("LOGC=%s&BONBU=%s&BONBUTYPE=1", new Object[] { str1, str2 });
+                      classCommon classCommon = EventAddFragment.this.common;
+                      FragmentActivity fragmentActivity = EventAddFragment.this.getActivity();
+                      EventAddFragment.this.common.getClass();
+                      classCommon.httpConnect((Context)fragmentActivity, str2, "HTTP_CENTER.do");
+                    }
+                    
+                    public void onNothingSelected(AdapterView<?> param1AdapterView) {}
+                  };
+                super(this);
+                spinner.setOnItemSelectedListener(onItemSelectedListener3);
+                return;
+              } 
+              this.common.dsp_Popup((Context)getActivity(), getString(2131886167), getString(2131886164));
+              return;
+            } 
+          } else {
+            this.common.dsp_Popup((Context)getActivity(), getString(2131886167), ((AndroidVo)spinner).returnMsg);
+          } 
+        } else {
+          this.common.getClass();
+          boolean bool = paramString3.equals("HTTP_BONBU.do");
+          if (bool) {
+            paramString1 = ((AndroidVo)spinner).returnCode;
+            this.common.getClass();
+            if (paramString1.equals("0000")) {
+              if (((AndroidVo)spinner).field1.equals("0")) {
+                setBonbu(((AndroidVo)spinner).IT_TAB1);
+              } else {
+                setEBonbu(((AndroidVo)spinner).IT_TAB1);
+              } 
+            } else {
+              this.common.dsp_Popup((Context)getActivity(), getString(2131886167), ((AndroidVo)spinner).returnMsg);
+            } 
+          } else {
+            this.common.getClass();
+            if (paramString3.equals("HTTP_CENTER.do")) {
+              paramString1 = ((AndroidVo)spinner).returnCode;
+              this.common.getClass();
+              if (paramString1.equals("0000")) {
+                if (((AndroidVo)spinner).field1.equals("0")) {
+                  setCenter(((AndroidVo)spinner).IT_TAB1);
+                } else {
+                  setECenter(((AndroidVo)spinner).IT_TAB1);
+                } 
+              } else {
+                this.common.dsp_Popup((Context)getActivity(), getString(2131886167), ((AndroidVo)spinner).returnMsg);
+              } 
+            } else {
+              this.common.getClass();
+              if (paramString3.equals("HTTP_EVENT_MODEL.do")) {
+                paramString1 = ((AndroidVo)spinner).returnCode;
+                this.common.getClass();
+                if (paramString1.equals("0000")) {
+                  if (this.spinner_Elogc.getSelectedItemPosition() == -1 || this.spinner_Ebonbu.getSelectedItemPosition() == -1 || this.spinner_Ecenter.getSelectedItemPosition() == -1)
+                    return; 
+                  if (((AndroidVo)spinner).field1.equals("0")) {
+                    this.common.dsp_Popup((Context)getActivity(), getString(2131886167), getString(2131886149));
+                    return;
+                  } 
+                  StringBuilder stringBuilder = new StringBuilder();
+                  this();
+                  stringBuilder.append(this.ELOGC);
+                  stringBuilder.append(this.EBONBU);
+                  stringBuilder.append(this.ECENTER);
+                  paramString3 = stringBuilder.toString();
+                  int i = ((sb_bizListView_Adapter.ItemSet)this.wk_Adapter.getItem(this.wk_Adapter.getCount() - 1)).getRowIndex();
+                  ViewGroup.LayoutParams layoutParams = this.listview_Model.getLayoutParams();
+                  bool = ((AndroidVo)spinner).field6.equals("3");
+                  if (!bool) {
+                    itemSet = this.wk_Adapter.new_getItemSet();
+                    itemSet.setUI_ID(1);
+                    itemSet.setRowIndex(i + 1);
+                    itemSet.setText(0, this.ELOGCNAME);
+                    itemSet.setText(1, this.EBONBUNAME);
+                    itemSet.setText(2, this.ECENTERNAME);
+                    itemSet.setText(3, ((AndroidVo)spinner).field2);
+                    itemSet.setText(4, ((AndroidVo)spinner).field3);
+                    itemSet.setText(5, ((AndroidVo)spinner).field4);
+                    itemSet.setText(6, ((AndroidVo)spinner).field5);
+                    itemSet.setText(7, ");
+                    StringBuilder stringBuilder1 = new StringBuilder();
+                    this();
+                    stringBuilder1.append(");
+                    stringBuilder1.append(((AndroidVo)spinner).field1);
+                    itemSet.setText(8, stringBuilder1.toString());
+                    itemSet.setText(9, paramString3);
+                    itemSet.setText(10, ((AndroidVo)spinner).field1);
+                    itemSet.setText(11, ((AndroidVo)spinner).field6);
+                    try {
+                      String str;
+                      if (itemSet.EditText.length() == 0) {
+                        str = "1";
+                      } else {
+                        str = String.valueOf(Integer.parseInt(itemSet.EditText) + 1);
+                      } 
+                      itemSet.EditText = str;
+                    } catch (Exception exception) {
+                      itemSet.EditText = "1";
+                    } 
+                    this.wk_Adapter.addItem(itemSet);
+                  } else {
+                    itemSet = this.wk_Adapter.new_getItemSet();
+                    itemSet.setUI_ID(2);
+                    itemSet.setRowIndex(i + 1);
+                    itemSet.setText(0, this.ELOGCNAME);
+                    itemSet.setText(1, this.EBONBUNAME);
+                    itemSet.setText(2, this.ECENTERNAME);
+                    itemSet.setText(3, ((AndroidVo)exception).field2);
+                    itemSet.setText(4, ((AndroidVo)exception).field3);
+                    itemSet.setText(5, ((AndroidVo)exception).field4);
+                    itemSet.setText(6, ((AndroidVo)exception).field5);
+                    itemSet.setText(7, ");
+                    StringBuilder stringBuilder1 = new StringBuilder();
+                    this();
+                    stringBuilder1.append(");
+                    stringBuilder1.append(((AndroidVo)exception).field1);
+                    itemSet.setText(8, stringBuilder1.toString());
+                    itemSet.setText(9, paramString3);
+                    itemSet.setText(10, ((AndroidVo)exception).field1);
+                    itemSet.setText(11, ((AndroidVo)exception).field6);
+                    itemSet.setTextBtn(0, this.common.get_sysDate_YYYY_MM_DD());
+                    this.wk_Adapter.addItem(itemSet);
+                  } 
+                  layoutParams.height += this.height;
+                } else {
+                  this.common.dsp_Popup((Context)getActivity(), getString(2131886167), ((AndroidVo)exception).returnMsg);
+                  return;
+                } 
+              } else {
+                this.common.getClass();
+                if (paramString3.equals("HTTP_EVENT_SAVE.do")) {
+                  paramString1 = ((AndroidVo)exception).returnCode;
+                  this.common.getClass();
+                  if (paramString1.equals("0000")) {
+                    ((MainActivity)getActivity()).onBackPressed();
+                  } else {
+                    this.common.dsp_Popup((Context)getActivity(), getString(2131886167), ((AndroidVo)exception).returnMsg);
+                    return;
+                  } 
+                } 
+              } 
+            } 
+          } 
+        } 
+      } else {
+        this.common.dsp_Popup((Context)getActivity(), getString(2131886167), (String)itemSet);
+      } 
+    } catch (Exception exception) {
+      this.common.dsp_Popup((Context)getActivity(), getString(2131886167), exception.getMessage());
+    } 
+  }
+  
+  
+  
+  "HTTP_EVENTMODEL_DELETE.do" : "DOCNO=%s&CENTER=%s&MODEL=%s&ID=%s"
+  
+  "HTTP_EVENT_MODEL.do" : "MCODE=%s&LOGC=%s&BONBU=%s&CENTER=%s"
+  
+  "HTTP_EVENT_UPDATE.do" : "MDATA=%s&ID=%s"
+  
+  "HTTP_EVENT_MODEL.do" : "MCODE=%s&LOGC=%s&BONBU=%s&CENTER=%s"
+  
+  
+  "HTTP_EVENT_DELETE.do"  : "DOCNO=%s&ID=%s"
+  
+  
+  "HTTP_EVENT_DETAIL.do" : "DOCNO=%s&id=%s"
+  
+  CallBack -----
+  
+  "HTTP_BONBU_LIST.do"
+  
+  "HTTP_BONBU.do" : "LOGC=%s&BONBUTYPE=1"
+  
+  "HTTP_CENTER.do" : "LOGC=%s&BONBU=%s&BONBUTYPE=1"
+  
+  "HTTP_BONBU.do"
+  
+  "HTTP_CENTER.do"
+  
+  "HTTP_EVENT_MODEL.do"
+  
+  "HTTP_EVENT_UPDATE.do"  
+  
+  "HTTP_EVENT_DELETE.do"
+  
+  "HTTP_EVENTMODEL_DELETE.do"
+  
+  "HTTP_EVENT_DETAIL.do"
+  
+  -------------------------------------------------
+  
+  "HTTP_BONBU_LIST.do" : "id=%s"
+  
+  
+  "HTTP_EVENTOUT_SEARCH.do" : "id=%s&StartDay=%s&EndDay=%s&LOGC=%s&BONBU=%s&CENTER=%s&EVENTNO=%s"
+  
+  CallBack -------------------------------------
+  
+  "HTTP_EVENTOUT_LIST.do"
+  
+  "HTTP_BONBU.do" : "LOGC=%s"
+  
+  "HTTP_CENTER.do" : "LOGC=%s&BONBU=%s"
+  
+  "HTTP_EVENTOUT_SEARCH.do"
+  
+  "HTTP_BONBU.do"
+  
+  "HTTP_CENTER.do"
+  
+  "HTTP_EVENT_DETAIL.do" : "DOCNO=%s&id=%s"
+  
+  "HTTP_EVENTOUT_LIST.do" : "id=%s"
+  
+  --------------------------------------------------
+  
+  "HTTP_RETURN_SEARCH.do" : "id=%s&StartDay=%s&EndDay=%s&LOGC=%s&BONBU=%s&CENTER=%s&ENAME=%s&BISSTS=%s"
+  
+  CallBack -----------------------------------
+  
+  "HTTP_RETURN.do"
+  "HTTP_BONBU.do" : "LOGC=%s"
+  "HTTP_CENTER.do" : "LOGC=%s&BONBU=%s"
+  ?? "DEM_CENTER" ??
+  
+  "HTTP_RETURN_SEARCH.do"
+  
+  "HTTP_BONBU.do"
+  
+  "HTTP_RETURN_UPDATE.do"
+  -------------------------------------------------
+  
+  bonbuCfmDetailFragment
+  
+  "HTTP_FILE_Snd.do" : "id=%s&INTYPE=%s&DOCNO=%s&DIC_DATE=%s&DIC_CMNT=%s&CFMsts=%s"
+  
+  "download.do" : "sysFile=%s&orgFile=%s"
+  
+  "HTTP_FILE_DEL.do" : "DOCNO=%s&SEQ=%s"
+  
+  
+  "HTTP_CFM_SEARCH.do" : "id=%s&StartDay=%s&EndDay=%s&LOGC=%s&BONBU=%s&CENTER=%s&CFMSTS=%s"
+  
+  CallBack --------------------------------------------
+  
+  "HTTP_CFM.do"
+  "HTTP_BONBU.do" : "LOGC=%s"
+  "HTTP_CENTER.do" : "LOGC=%s&BONBU=%s"
+  "HTTP_CFM_SEARCH.do"
+  "HTTP_BONBU.do"
+  "HTTP_CENTER.do"
+  "HTTP_CFM_ADD.do"
+  
+  -------------------------
+  
+  File CallBack --------------
+  
+  "HTTP_CFM_ADD.do" : "id=%s&DOCNO=%s&INTYPE=%s" 
+  "HTTP_CFM.do"
+  -----------------------------
+  
+  login
+  APP 업데이트?
+  "AplusWeb.apk"
+  "HTTP_UPDATE.do" : "sysFile=%s"
+  
+  "HTTP_LOGIN.do" : "id=%s&password=%s"
+  
+  CallBack-------------------------------------
+  
+  "HTTP_LOGIN.do"
+  "HTTP_VERSION.do"
+  "HTTP_VERSION.do"
+  
+  ---------------------------------------
+  
+  mainDetailFragment
+  
+  "download.do" : "sysFile=%s&orgFile=%s"
+  
+  mainFragment
+  
+  CallBack --------------------------------
+  "HTTP_MAIN.do"
+  "HTTP_MAIN_DETAIL.do"
+  -----------------------------------------
+  
+  File CallBack --------------
+  
+  "HTTP_MAIN_DETAIL.do" : "id=%s&DOCNO=%s"
+  
+  "HTTP_MAIN.do" : "id=%s"
+
+
+------------------------------------
+
+EventNoDialog
+
+"HTTP_EVENT_SEARCH.do" : "id=%s&StartDay=%s&EndDay=%s&BONBU=%s&CENTER=%s&EUSERID=%s&EUSERNAME=%s&GNAME=%s&JNAME=%s&ESTATE=%s&GTYPE=%s&EVENTTYPE=%s"
+
+CallBack-------------------------------------
+"HTTP_EVENT_LIST.do"
+"HTTP_BONBU.do" : "LOGC=%s"
+"HTTP_CENTER.do" : "LOGC=%s&BONBU=%s"
+"HTTP_BONBU.do"
+"HTTP_CENTER.do"
+"HTTP_EVENT_SEARCH.do"
+
+---------------------------------
+
+File CallBack --------------
+
+"HTTP_EVENT_LIST.do" : "id=%s"
+---------------------------------
+
+ModelDialog
+
+"HTTP_MODEL_LIST.do" : "LOGC=%s&LCODE=%s&MCODE=%s&SCODE=%s&MNAME=%s"
+
+CallBack-------------------------------------
+"HTTP_LGROUP_LIST.do"
+"HTTP_MGROUP_LIST.do"
+"HTTP_SGROUP_LIST.do"
+"HTTP_MODEL_LIST.do"
+
+---------------------------------
+
+File CallBack --------------
+
+"HTTP_MGROUP_LIST.do" : "LOGC=%s&LCODE=%s"
+
+"HTTP_MGROUP_LIST.do"
+
+"HTTP_SGROUP_LIST.do" : "LOGC=%s&LCODE=%s&MCODE=%s"
+
+"HTTP_LGROUP_LIST.do"
