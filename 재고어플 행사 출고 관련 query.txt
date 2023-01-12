@@ -1,0 +1,55 @@
+<update id="updateEVENT" parameterType="com.vo.EventVo">
+     update DT_EVENT_OUT set DEO_CMNT = #{DEO_CMNT},
+                             CMN_UPD_DATE = getdate(),
+                             CMN_UPD_PROG = #{CMN_UPD_PROG},
+                             CMN_UPD_ID = #{CMN_UPD_ID}
+      where DEO_DOCNO = #{DEO_DOCNO}
+ </update>
+
+<update id="updateAndroidReturn" parameterType="com.vo.EventVo">
+   update DT_EVENT_MODEL 
+        set DEM_STS = #{DEM_STS},
+            DEM_CMNT = #{DEM_CMNT},
+            DEM_REUESR = #{DEM_REUESR},
+            DEM_REDATE = #{DEM_REDATE},
+            CMN_UPD_DATE = getdate(),
+            CMN_UPD_PROG = #{CMN_UPD_PROG},
+            CMN_UPD_ID = #{CMN_UPD_ID}
+      where DEM_DOCNO = #{DEM_DOCNO}
+        AND DEM_CENTER = #{DEM_CENTER}
+        AND DEM_MODEL = #{DEM_MODEL}
+ </update>
+
+
+<update id="updateAndroidReturn" parameterType="com.vo.EventVo">
+   update DT_EVENT_MODEL 
+        set DEM_STS = #{DEM_STS},
+            DEM_CMNT = #{DEM_CMNT},
+            DEM_REUESR = #{DEM_REUESR},
+            DEM_REDATE = #{DEM_REDATE},
+            CMN_UPD_DATE = getdate(),
+            CMN_UPD_PROG = #{CMN_UPD_PROG},
+            CMN_UPD_ID = #{CMN_UPD_ID}
+      where DEM_DOCNO = #{DEM_DOCNO}
+        AND DEM_CENTER = #{DEM_CENTER}
+        AND DEM_MODEL = #{DEM_MODEL}
+ </update>
+
+<delete id="deleteEVENTMODEL" parameterType="com.vo.EventModelVo">
+  delete from DT_EVENT_MODEL
+      where DEM_DOCNO = #{DEM_DOCNO}
+        AND DEM_CENTER =  #{DEM_CENTER}
+        AND DEM_MODEL =  #{DEM_MODEL}
+ </delete>
+
+<delete id="deleteEVENT" parameterType="String">
+  delete from DT_EVENT_OUT
+      where DEO_DOCNO = #{value}
+ </delete>
+
+<delete id="deleteNoticeFile" parameterType="hashmap">
+     delete from MF_DATA_FILE
+      WHERE MDF_DOCNO = #{DOCNO}
+     AND MDF_SEQ = #{SEQ}
+ </delete>
+
